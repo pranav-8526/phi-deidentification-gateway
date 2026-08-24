@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phi-gateway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0c0c0e;
+            --bg-surface: #131316;
+            --bg-header: #17171b;
+            --border-color: #1f1f23;
+            --border-active: #38383e;
+            
+            --text-primary: #f3f4f6;
+            --text-secondary: #8e9099;
+            --text-muted: #57585f;
+            
+            --tag-name-bg: #eab308;
+            --tag-name-text: #000000;
+            --tag-date-bg: #38bdf8;
+            --tag-date-text: #000000;
+            --tag-id-bg: #f87171;
+            --tag-id-text: #000000;
+            --tag-location-bg: #64748b;
+            --tag-location-text: #ffffff;
+            
+            --accent: #6366f1;
+            --success: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Operational Bar */
+        .top-status-bar {
+            background-color: #08080a;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.25rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.675rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--success);
+            border-radius: 50%;
+            margin-right: 0.4rem;
+            box-shadow: 0 0 6px var(--success);
+        }
+
+        /* Main Header */
+        header {
+            background-color: var(--bg-header);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .brand-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-version {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.25rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .header-links span {
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+
+        .header-links span:hover {
+            color: var(--text-primary);
+        }
+
+        /* Tabs Nav Bar */
+        .tabs-nav {
+            background-color: var(--bg-base);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.775rem;
+            font-weight: 500;
+            padding: 0.65rem 0.25rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.15s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--text-primary);
+        }
+
+        /* Workspace Grid */
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 240px 1fr 1fr;
+            height: calc(100vh - 100px);
+            overflow: hidden;
+        }
+
+        /* Panel Common Styles */
+        .panel {
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.725rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Request Stream Styles */
+        .request-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .request-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .request-item:hover {
+            background-color: #17171c;
+        }
+
+        .request-item.active {
+            background-color: #1c1c22;
+        }
+
+        .request-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .request-method {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
+        }
+
+        .request-time {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .request-date {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        /* Editor Panel Styles */
+        textarea {
+            flex: 1;
+            background-color: var(--bg-surface);
+            border: none;
+            padding: 1.25rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .action-icon {
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.15s ease;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .action-icon:hover {
+            color: var(--text-primary);
+        }
+
+        /* Redacted Output Styles */
+        .output-viewer {
+            flex: 1;
+            padding: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-y: auto;
+            color: var(--text-primary);
+            background-color: var(--bg-surface);
+        }
+
+        /* Pill Buttons */
+        .pill-btn {
+            background-color: #242429;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            font-size: 0.725rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .pill-btn:hover {
+            background-color: #2e2e34;
+            border-color: var(--border-active);
+        }
+
+        /* Styled Inline Badges matching user upload */
+        .entity-badge {
+            display: inline-block;
+            padding: 0.125rem 0.35rem;
+            margin: 0 0.1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.2;
+        }
+
+        .tag-name {
+            background-color: var(--tag-name-bg);
+            color: var(--tag-name-text);
+        }
+
+        .tag-date {
+            background-color: var(--tag-date-bg);
+            color: var(--tag-date-text);
+        }
+
+        .tag-id {
+            background-color: var(--tag-id-bg);
+            color: var(--tag-id-text);
+        }
+
+        .tag-location {
+            background-color: var(--tag-location-bg);
+            color: var(--tag-location-text);
+        }
+
+        .tag-neutral {
+            background-color: #3f3f46;
+            color: #ffffff;
+        }
+
+        /* Detection Summary Section */
+        .summary-panel {
+            border-top: 1px solid var(--border-color);
+            background-color: #101013;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .summary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .summary-count {
+            color: var(--text-secondary);
+        }
+
+        .summary-footer {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .summary-footer:hover {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Center Status Dot Header -->
+    <div class="top-status-bar">
+        <div class="status-dot"></div>
+        <span>GATEWAY_OPERATIONAL</span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header>
+        <div class="brand">
+            <span class="brand-name">phi-gateway</span>
+            <span class="brand-version">v1.2.0</span>
+        </div>
+        <div class="header-links">
+            <span>Buttons</span>
+            <span>Links</span>
+            <span>Rave ▾</span>
+        </div>
+    </header>
+
+    <!-- Sub navigation tab bar -->
+    <div class="tabs-nav">
+        <button class="tab-btn">Logs</button>
+        <button class="tab-btn active">Input/Output</button>
+        <button class="tab-btn">Config</button>
+        <button class="tab-btn">Rules</button>
+    </div>
+
+    <!-- Workspace container -->
+    <div class="workspace">
+        
+        <!-- Left Column: Request Stream -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>Request_Stream</span>
+                <span class="action-icon">⋮</span>
+            </div>
+            <div class="panel-content" id="request-stream-list">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Middle Column: Input Area -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>Input_Data</span>
+                <div class="panel-actions">
+                    <span id="raw-char-count" style="font-size: 0.65rem; color: var(--text-secondary); text-transform: none; margin-right: 0.5rem;">0 characters</span>
+                    <span class="action-icon" style="margin-right: 0.5rem;" onclick="loadFilesPrompt()">⚙</span>
+                    <span class="action-icon" onclick="clearInput()">🗑</span>
+                </div>
+            </div>
+            <input type="file" id="file-input" style="display: none;" onchange="handleFileSelect(event)" accept=".pdf,.txt,.md,.json,.csv">
+            <textarea id="raw-input" placeholder="Enter clinical notes here or drag & drop files here..." oninput="onInputTextChange()"></textarea>
+        </div>
+
+        <!-- Right Column: Outputs -->
+        <div class="panel" style="border-right: none;">
+            <div class="panel-header">
+                <span>Redacted_Output</span>
+                <div class="panel-actions">
+                    <span id="latency-info" style="font-size: 0.65rem; color: var(--text-secondary); text-transform: none; margin-right: 0.5rem; display: none;"></span>
+                    <button class="pill-btn" onclick="runDeidentification()">Redact</button>
+                    <button class="pill-btn" onclick="clearOutput()">Clear</button>
+                </div>
+            </div>
+            
+            <!-- Output viewer -->
+            <div class="output-viewer" id="masked-output">Sanitized text will display here...</div>
+
+            <!-- Detection Summary Card -->
+            <div class="summary-panel">
+                <div class="summary-header">
+                    <span>Detection Summary</span>
+                    <span>▴</span>
+                </div>
+                <div class="summary-list" id="summary-list">
+                    <div class="summary-row"><span>NAME</span><span class="summary-count">(0)</span></div>
+                    <div class="summary-row"><span>DATE</span><span class="summary-count">(0)</span></div>
+                    <div class="summary-row"><span>SSN</span><span class="summary-count">(0)</span></div>
+                    <div class="summary-row"><span>ADDR</span><span class="summary-count">(0)</span></div>
+                </div>
+                <div class="summary-footer" onclick="runRoundtripDemo()">
+                    Execute Roundtrip Rehydration
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let sampleNotes = [];
+        let activeIndex = -1;
+        let debounceTimer;
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            if (!text) return "";
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Format deidentified tags into styled inline badges matching user image
+        function formatMaskedText(text) {
+            if (!text) return "";
+            let escaped = escapeHtml(text);
+            
+            return escaped.replace(/\[([A-Z_]+)(?:[:_]\s*(\d+|\d+\+))?\]/g, (match, tag, num) => {
+                let display = match;
+                let tagUpper = tag.toUpperCase();
+                let className = "tag-neutral";
+                
+                if (tagUpper.includes("NAME") || tagUpper.includes("PATIENT") || tagUpper.includes("DOCTOR") || tagUpper.includes("PROVIDER")) {
+                    className = "tag-name";
+                } else if (tagUpper.includes("DATE") || tagUpper.includes("AGE")) {
+                    className = "tag-date";
+                } else if (tagUpper.includes("SSN") || tagUpper.includes("ID") || tagUpper.includes("PHONE") || tagUpper.includes("EMAIL") || tagUpper.includes("VEHICLE") || tagUpper.includes("DEVICE") || tagUpper.includes("LICENSE")) {
+                    className = "tag-id";
+                } else if (tagUpper.includes("LOCATION") || tagUpper.includes("FACILITY") || tagUpper.includes("GEOGRAPHY") || tagUpper.includes("CITY") || tagUpper.includes("STATE") || tagUpper.includes("ZIPCODE")) {
+                    className = "tag-location";
+                }
+                
+                return `<span class="entity-badge ${className}">${display}</span>`;
+            });
+        }
+
+        // Calculate entity counts for the summary card
+        function updateDetectionSummary(text) {
+            let nameCount = 0;
+            let dateCount = 0;
+            let ssnCount = 0;
+            let addrCount = 0;
+
+            if (text) {
+                const regex = /\[([A-Z_]+)(?:[:_]\s*(\d+|\d+\+))?\]/g;
+                let match;
+                while ((match = regex.exec(text)) !== null) {
+                    let tagUpper = match[1].toUpperCase();
+                    if (tagUpper.includes("NAME") || tagUpper.includes("PATIENT") || tagUpper.includes("DOCTOR") || tagUpper.includes("PROVIDER")) {
+                        nameCount++;
+                    } else if (tagUpper.includes("DATE") || tagUpper.includes("AGE")) {
+                        dateCount++;
+                    } else if (tagUpper.includes("SSN") || tagUpper.includes("ID") || tagUpper.includes("PHONE") || tagUpper.includes("EMAIL") || tagUpper.includes("VEHICLE") || tagUpper.includes("DEVICE") || tagUpper.includes("LICENSE")) {
+                        ssnCount++;
+                    } else if (tagUpper.includes("LOCATION") || tagUpper.includes("FACILITY") || tagUpper.includes("GEOGRAPHY") || tagUpper.includes("CITY") || tagUpper.includes("STATE") || tagUpper.includes("ZIPCODE")) {
+                        addrCount++;
+                    }
+                }
+            }
+
+            document.getElementById('summary-list').innerHTML = `
+                <div class="summary-row"><span>NAME</span><span class="summary-count">(${nameCount})</span></div>
+                <div class="summary-row"><span>DATE</span><span class="summary-count">(${dateCount})</span></div>
+                <div class="summary-row"><span>SSN</span><span class="summary-count">(${ssnCount})</span></div>
+                <div class="summary-row"><span>ADDR</span><span class="summary-count">(${addrCount})</span></div>
+            `;
+        }
+
+        function updateCount() {
+            const val = document.getElementById('raw-input').value;
+            const countEl = document.getElementById('raw-char-count');
+            if (countEl) {
+                countEl.innerText = `${val.length} characters`;
+            }
+        }
+
+        function onInputTextChange() {
+            updateCount();
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const text = document.getElementById('raw-input').value;
+                if (text.trim()) {
+                    runDeidentification();
+                } else {
+                    clearOutput();
+                }
+            }, 300); // 300ms debounce to prevent input blocking
+        }
+
+        function clearInput() {
+            document.getElementById('raw-input').value = '';
+            clearOutput();
+            updateCount();
+        }
+
+        function clearOutput() {
+            document.getElementById('masked-output').innerText = "Sanitized text will display here...";
+            updateDetectionSummary("");
+        }
+
+        function loadFilesPrompt() {
+            document.getElementById('file-input').click();
+        }
+
+        // Fetch mock request streams
+        function loadRequestStreams() {
+            fetch('/samples')
+                .then(res => res.json())
+                .then(data => {
+                    sampleNotes = data;
+                    const streamList = document.getElementById('request-stream-list');
+                    if (!streamList) return;
+                    streamList.innerHTML = '';
+                    
+                    sampleNotes.slice(0, 5).forEach((note, idx) => {
+                        let method = "REQUEST_POST";
+                        let timeStr = "1m ago";
+                        let dateStr = "08/26/23, 13:37 PM";
+                        
+                        if (idx === 1) {
+                            method = "REQUEST_STREAM";
+                            dateStr = "08/28/23, 12:37 PM";
+                        } else if (idx === 2) {
+                            method = "REQUEST_POST";
+                            dateStr = "08/28/23, 12:37 AM";
+                        } else if (idx === 3) {
+                            method = "REQUEST_MISS";
+                            dateStr = "08/26/23, 12:37 AM";
+                        }
+
+                        const item = document.createElement('div');
+                        item.className = `request-item ${idx === activeIndex ? 'active' : ''}`;
+                        item.onclick = () => selectRequest(idx);
+                        item.innerHTML = `
+                            <div class="request-meta">
+                                <span class="request-method">${method}</span>
+                                <span class="request-time">${timeStr}</span>
+                            </div>
+                            <div class="request-date">${dateStr}</div>
+                        `;
+                        streamList.appendChild(item);
+                    });
+                })
+                .catch(err => console.error("Error loading sample request streams:", err));
+        }
+
+        function selectRequest(idx) {
+            activeIndex = idx;
+            const items = document.querySelectorAll('.request-item');
+            items.forEach((item, i) => {
+                if (i === idx) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+
+            if (sampleNotes[idx]) {
+                document.getElementById('raw-input').value = sampleNotes[idx].text;
+                updateCount();
+                runDeidentification();
+            }
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                processFile(files[0]);
+            }
+        }
+
+        function processFile(file) {
+            const isTextFile = file.name.endsWith('.txt') || file.name.endsWith('.md') || file.name.endsWith('.json') || file.name.endsWith('.csv') || file.type.startsWith('text/');
+            
+            document.getElementById('raw-input').value = "";
+            document.getElementById('masked-output').innerText = "Uploading and processing file...";
+            
+            const latencyEl = document.getElementById('latency-info');
+            if (latencyEl) latencyEl.style.display = 'none';
+
+            const startTime = performance.now();
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(errData => {
+                        throw new Error(errData.detail || "Server error during file upload");
+                    });
+                }
+                return res.json();
+            })
+            .then(data => {
+                const duration = ((performance.now() - startTime) / 1000).toFixed(2);
+                if (latencyEl) {
+                    let details = `${duration}s`;
+                    if (data.latency) {
+                        details += ` (PDF Ext: ${(data.latency.pdf_extraction_ms / 1000).toFixed(2)}s | De-id: ${(data.latency.deidentification_ms / 1000).toFixed(2)}s)`;
+                    }
+                    latencyEl.innerText = details;
+                    latencyEl.style.display = 'inline';
+                }
+                if (data.raw_text) {
+                    document.getElementById('raw-input').value = data.raw_text;
+                    document.getElementById('masked-output').innerHTML = formatMaskedText(data.masked_text);
+                    updateDetectionSummary(data.masked_text);
+                    updateCount();
+                }
+            })
+            .catch(err => {
+                console.error("Upload failed:", err);
+                if (isTextFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('raw-input').value = e.target.result;
+                        updateCount();
+                        runDeidentification();
+                    };
+                    reader.readAsText(file);
+                } else {
+                    document.getElementById('masked-output').innerText = `⚠️ Error parsing file: ${err.message}`;
+                    alert(`Failed to parse file: ${err.message}`);
+                }
+            });
+        }
+
+        async function runDeidentification() {
+            const text = document.getElementById('raw-input').value;
+            if (!text.trim()) return;
+
+            const latencyEl = document.getElementById('latency-info');
+            if (latencyEl) latencyEl.style.display = 'none';
+            const startTime = performance.now();
+
+            try {
+                const response = await fetch('/deidentify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text, patient_seed: 42 })
+                });
+                const data = await response.json();
+
+                const duration = ((performance.now() - startTime) / 1000).toFixed(2);
+                if (latencyEl) {
+                    let details = `${duration}s`;
+                    if (data.latency) {
+                        details += ` (De-id: ${(data.latency.deidentification_ms / 1000).toFixed(2)}s)`;
+                    }
+                    latencyEl.innerText = details;
+                    latencyEl.style.display = 'inline';
+                }
+
+                document.getElementById('masked-output').innerHTML = formatMaskedText(data.masked_text);
+                updateDetectionSummary(data.masked_text);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function runRoundtripDemo() {
+            const text = document.getElementById('raw-input').value;
+            if (!text.trim()) return;
+
+            try {
+                const response = await fetch('/roundtrip', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                });
+                const data = await response.json();
+
+                document.getElementById('masked-output').innerHTML = formatMaskedText(data.masked_text);
+                updateDetectionSummary(data.masked_text);
+                
+                alert("Roundtrip Successful!\nRehydrated text:\n\n" + data.final_rehydrated_text);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // Textarea Drag & Drop File Handling
+        const inputArea = document.getElementById('raw-input');
+
+        if (inputArea) {
+            ['dragenter', 'dragover'].forEach(eventName => {
+                inputArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    inputArea.style.backgroundColor = '#17171c';
+                }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                inputArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    inputArea.style.backgroundColor = 'var(--bg-surface)';
+                }, false);
+            });
+
+            inputArea.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                if (files.length > 0) {
+                    processFile(files[0]);
+                }
+            });
+        }
+
+        // Initialize request streams on load
+        window.onload = () => {
+            loadRequestStreams();
+        };
+    </script>
+</body>
+</html>

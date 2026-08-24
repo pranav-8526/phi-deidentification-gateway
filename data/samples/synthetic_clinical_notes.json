@@ -1,0 +1,402 @@
+[
+  {
+    "id": "NOTE-0001",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Allison Hill (SSN: 759-70-1425)\nDate of Birth: 1961-01-05 | MRN: MRN-772246\nED Visit Date: 2026-03-22\nEmergency Contact: Valerie Gray at 001-260-501-3389\n\nPatient Allison Hill was evaluated in the ED following an acute episode of lower back pain.\nLab results uploaded to portal: https://www.jones.com/ (IP: 169.227.59.103).\nDischarged in stable condition. Follow up with Dr. Blair on 2026-08-24.",
+    "patient_name": "Allison Hill",
+    "dob": "1961-01-05",
+    "ssn": "759-70-1425",
+    "mrn": "MRN-772246"
+  },
+  {
+    "id": "NOTE-0002",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Jesse Flowers (SSN: 274-90-1170)\nDate of Birth: 1952-10-09 | MRN: MRN-372528\nED Visit Date: 2026-06-23\nEmergency Contact: Brian Burton at +1-528-232-7648x350\n\nPatient Jesse Flowers was evaluated in the ED following an acute episode of shortness of breath.\nLab results uploaded to portal: http://carlson-mcdonald.com/ (IP: 194.11.193.174).\nDischarged in stable condition. Follow up with Dr. Davis on 2026-08-29.",
+    "patient_name": "Jesse Flowers",
+    "dob": "1952-10-09",
+    "ssn": "274-90-1170",
+    "mrn": "MRN-372528"
+  },
+  {
+    "id": "NOTE-0003",
+    "text": "PATIENT: Ashley Dyer | DOB: 1966-12-13 | MRN: MRN-116970\nADMISSION DATE: 2026-03-17 | DISCHARGE DATE: 2026-08-30\nPRIMARY CARE PROVIDER: Dr. Baker\nATTENDING FACILITY: Allen Memorial Hospital, 117 Tiffany Place, East Donna, OH 22144\nCONTACT PHONE: 001-248-728-1489x3252 | EMAIL: xsmith@example.com | SSN: 162-59-0054\n\nCHIEF COMPLAINT: Patient presented with acute migraine for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Ashley Dyer, a 63-year-old patient, reported symptoms starting on 2025-05-30.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Ibuprofen 500mg daily.\nPLAN: Follow up in 2 weeks at Allen Memorial Hospital or call 001-248-728-1489x3252.",
+    "patient_name": "Ashley Dyer",
+    "dob": "1966-12-13",
+    "ssn": "162-59-0054",
+    "mrn": "MRN-116970"
+  },
+  {
+    "id": "NOTE-0004",
+    "text": "PATIENT: Danny Morgan | DOB: 2006-01-09 | MRN: MRN-617024\nADMISSION DATE: 2026-03-16 | DISCHARGE DATE: 2026-08-26\nPRIMARY CARE PROVIDER: Dr. Chandler\nATTENDING FACILITY: Lee Memorial Hospital, 656 Owens Stream, Lake Deniseville, AR 53273\nCONTACT PHONE: 510.451.8347 | EMAIL: esanchez@example.com | SSN: 073-91-0965\n\nCHIEF COMPLAINT: Patient presented with abdominal pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Danny Morgan, a 49-year-old patient, reported symptoms starting on 2024-10-13.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Ibuprofen 500mg daily.\nPLAN: Follow up in 2 weeks at Lee Memorial Hospital or call 510.451.8347.",
+    "patient_name": "Danny Morgan",
+    "dob": "2006-01-09",
+    "ssn": "073-91-0965",
+    "mrn": "MRN-617024"
+  },
+  {
+    "id": "NOTE-0005",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Zachary Huff (SSN: 493-28-6571)\nDate of Birth: 1943-05-01 | MRN: MRN-174389\nED Visit Date: 2026-08-20\nEmergency Contact: Scott Powell at 9264064746\n\nPatient Zachary Huff was evaluated in the ED following an acute episode of lower back pain.\nLab results uploaded to portal: http://www.sandoval-cunningham.com/ (IP: 205.162.82.165).\nDischarged in stable condition. Follow up with Dr. Jones on 2026-08-27.",
+    "patient_name": "Zachary Huff",
+    "dob": "1943-05-01",
+    "ssn": "493-28-6571",
+    "mrn": "MRN-174389"
+  },
+  {
+    "id": "NOTE-0006",
+    "text": "PROGRESS NOTE - Riggs Memorial Hospital\nPatient Name: Emily Baker\nDOB: 1948-06-12 | Account Number: ACC-5304573\nDate of Service: 2025-11-25\nAttending Physician: Dr. Cooper\n\nSUBJECTIVE: Emily Baker (58 y/o) presents for routine follow-up.\nContact details on file: 518-738-4251, eric84@example.net. Insurance Claim: CLAIM-9736572.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic lower back pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-21.",
+    "patient_name": "Emily Baker",
+    "dob": "1948-06-12",
+    "ssn": "010-59-9225",
+    "mrn": "MRN-479434"
+  },
+  {
+    "id": "NOTE-0007",
+    "text": "PATIENT: Jessica Smith | DOB: 1940-11-16 | MRN: MRN-572092\nADMISSION DATE: 2026-06-16 | DISCHARGE DATE: 2026-08-24\nPRIMARY CARE PROVIDER: Dr. Keller\nATTENDING FACILITY: Johnson Memorial Hospital, 3421 Brennan Walks Suite 337, Kevinbury, IN 03602\nCONTACT PHONE: (420)545-0533x15869 | EMAIL: theresacochran@example.com | SSN: 597-71-2427\n\nCHIEF COMPLAINT: Patient presented with acute migraine for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Jessica Smith, a 39-year-old patient, reported symptoms starting on 2025-01-03.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Metformin 500mg daily.\nPLAN: Follow up in 2 weeks at Johnson Memorial Hospital or call (420)545-0533x15869.",
+    "patient_name": "Jessica Smith",
+    "dob": "1940-11-16",
+    "ssn": "597-71-2427",
+    "mrn": "MRN-572092"
+  },
+  {
+    "id": "NOTE-0008",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Kyle Reed (SSN: 395-74-3115)\nDate of Birth: 1973-04-29 | MRN: MRN-635656\nED Visit Date: 2026-03-06\nEmergency Contact: Jeremy Lowe at 706-308-8356x159\n\nPatient Kyle Reed was evaluated in the ED following an acute episode of joint stiffness.\nLab results uploaded to portal: http://www.robertson-schultz.com/ (IP: 79.8.22.75).\nDischarged in stable condition. Follow up with Dr. Lawson on 2026-08-26.",
+    "patient_name": "Kyle Reed",
+    "dob": "1973-04-29",
+    "ssn": "395-74-3115",
+    "mrn": "MRN-635656"
+  },
+  {
+    "id": "NOTE-0009",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Courtney Gonzalez (SSN: 871-99-1194)\nDate of Birth: 1933-12-17 | MRN: MRN-256736\nED Visit Date: 2026-02-06\nEmergency Contact: Kari Allen at 569.436.7632x016\n\nPatient Courtney Gonzalez was evaluated in the ED following an acute episode of acute migraine.\nLab results uploaded to portal: https://www.rogers-orozco.com/ (IP: 78.204.252.246).\nDischarged in stable condition. Follow up with Dr. Ramirez on 2026-08-21.",
+    "patient_name": "Courtney Gonzalez",
+    "dob": "1933-12-17",
+    "ssn": "871-99-1194",
+    "mrn": "MRN-256736"
+  },
+  {
+    "id": "NOTE-0010",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Christian Lewis (SSN: 426-08-3389)\nDate of Birth: 1987-02-06 | MRN: MRN-346954\nED Visit Date: 2026-06-08\nEmergency Contact: Philip Gray at (569)909-6705x46688\n\nPatient Christian Lewis was evaluated in the ED following an acute episode of abdominal pain.\nLab results uploaded to portal: http://curry.com/ (IP: 113.25.15.147).\nDischarged in stable condition. Follow up with Dr. Lewis on 2026-08-26.",
+    "patient_name": "Christian Lewis",
+    "dob": "1987-02-06",
+    "ssn": "426-08-3389",
+    "mrn": "MRN-346954"
+  },
+  {
+    "id": "NOTE-0011",
+    "text": "PROGRESS NOTE - Gonzalez Memorial Hospital\nPatient Name: Marissa Webster\nDOB: 1964-04-16 | Account Number: ACC-341919\nDate of Service: 2026-07-07\nAttending Physician: Dr. Short\n\nSUBJECTIVE: Marissa Webster (45 y/o) presents for routine follow-up.\nContact details on file: 319.237.4529x9124, barbara66@example.net. Insurance Claim: CLAIM-83394260.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic acute migraine.\nPLAN: Continue current regimen. Return to clinic on 2026-08-26.",
+    "patient_name": "Marissa Webster",
+    "dob": "1964-04-16",
+    "ssn": "157-31-2069",
+    "mrn": "MRN-879995"
+  },
+  {
+    "id": "NOTE-0012",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Roger Vargas (SSN: 462-32-7614)\nDate of Birth: 1974-07-02 | MRN: MRN-871084\nED Visit Date: 2026-03-22\nEmergency Contact: Matthew Wood at 001-596-750-7527\n\nPatient Roger Vargas was evaluated in the ED following an acute episode of shortness of breath.\nLab results uploaded to portal: https://warner-nelson.com/ (IP: 115.20.211.68).\nDischarged in stable condition. Follow up with Dr. Sullivan on 2026-08-27.",
+    "patient_name": "Roger Vargas",
+    "dob": "1974-07-02",
+    "ssn": "462-32-7614",
+    "mrn": "MRN-871084"
+  },
+  {
+    "id": "NOTE-0013",
+    "text": "PATIENT: Patrick Tapia | DOB: 1955-11-01 | MRN: MRN-226895\nADMISSION DATE: 2025-11-24 | DISCHARGE DATE: 2026-08-22\nPRIMARY CARE PROVIDER: Dr. Brown\nATTENDING FACILITY: Little Memorial Hospital, 09477 Peterson Center Suite 711, Vasquezshire, SC 90475\nCONTACT PHONE: +1-641-234-3524x082 | EMAIL: tranheidi@example.org | SSN: 742-76-8596\n\nCHIEF COMPLAINT: Patient presented with abdominal pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Patrick Tapia, a 44-year-old patient, reported symptoms starting on 2025-03-24.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Amoxicillin 500mg daily.\nPLAN: Follow up in 2 weeks at Little Memorial Hospital or call +1-641-234-3524x082.",
+    "patient_name": "Patrick Tapia",
+    "dob": "1955-11-01",
+    "ssn": "742-76-8596",
+    "mrn": "MRN-226895"
+  },
+  {
+    "id": "NOTE-0014",
+    "text": "PROGRESS NOTE - Heath Memorial Hospital\nPatient Name: Amy Choi\nDOB: 1944-02-21 | Account Number: ACC-3540415\nDate of Service: 2026-03-29\nAttending Physician: Dr. Jones\n\nSUBJECTIVE: Amy Choi (46 y/o) presents for routine follow-up.\nContact details on file: 928.612.0679, halljasmine@example.net. Insurance Claim: CLAIM-35520201.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic shortness of breath.\nPLAN: Continue current regimen. Return to clinic on 2026-08-24.",
+    "patient_name": "Amy Choi",
+    "dob": "1944-02-21",
+    "ssn": "677-11-2574",
+    "mrn": "MRN-655900"
+  },
+  {
+    "id": "NOTE-0015",
+    "text": "PATIENT: Stacy Navarro | DOB: 1964-09-16 | MRN: MRN-95763\nADMISSION DATE: 2026-02-15 | DISCHARGE DATE: 2026-08-26\nPRIMARY CARE PROVIDER: Dr. Hancock\nATTENDING FACILITY: Ortiz Memorial Hospital, 125 Steele Heights Suite 807, West Johnnyville, WI 53477\nCONTACT PHONE: 4498027874 | EMAIL: ecosta@example.com | SSN: 857-74-9620\n\nCHIEF COMPLAINT: Patient presented with shortness of breath for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Stacy Navarro, a 23-year-old patient, reported symptoms starting on 2024-09-10.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Lisinopril 500mg daily.\nPLAN: Follow up in 2 weeks at Ortiz Memorial Hospital or call 4498027874.",
+    "patient_name": "Stacy Navarro",
+    "dob": "1964-09-16",
+    "ssn": "857-74-9620",
+    "mrn": "MRN-95763"
+  },
+  {
+    "id": "NOTE-0016",
+    "text": "PATIENT: Jessica Wolfe | DOB: 1947-03-01 | MRN: MRN-660626\nADMISSION DATE: 2026-02-26 | DISCHARGE DATE: 2026-08-22\nPRIMARY CARE PROVIDER: Dr. Campbell\nATTENDING FACILITY: Bryant Memorial Hospital, 3982 Joshua Turnpike, Morganhaven, KY 00837\nCONTACT PHONE: 9866131712 | EMAIL: robert77@example.org | SSN: 163-40-9025\n\nCHIEF COMPLAINT: Patient presented with hypertension for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Jessica Wolfe, a 23-year-old patient, reported symptoms starting on 2025-02-09.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Lisinopril 500mg daily.\nPLAN: Follow up in 2 weeks at Bryant Memorial Hospital or call 9866131712.",
+    "patient_name": "Jessica Wolfe",
+    "dob": "1947-03-01",
+    "ssn": "163-40-9025",
+    "mrn": "MRN-660626"
+  },
+  {
+    "id": "NOTE-0017",
+    "text": "PROGRESS NOTE - Morgan Memorial Hospital\nPatient Name: Mrs. Janet Chase\nDOB: 1986-07-17 | Account Number: ACC-7935224\nDate of Service: 2025-09-28\nAttending Physician: Dr. Davis\n\nSUBJECTIVE: Mrs. Janet Chase (25 y/o) presents for routine follow-up.\nContact details on file: +1-427-802-8951x71870, charlesharrington@example.com. Insurance Claim: CLAIM-94654083.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic shortness of breath.\nPLAN: Continue current regimen. Return to clinic on 2026-08-26.",
+    "patient_name": "Mrs. Janet Chase",
+    "dob": "1986-07-17",
+    "ssn": "831-49-6326",
+    "mrn": "MRN-333632"
+  },
+  {
+    "id": "NOTE-0018",
+    "text": "PROGRESS NOTE - Wright Memorial Hospital\nPatient Name: Joseph Knight\nDOB: 1955-02-21 | Account Number: ACC-1324869\nDate of Service: 2025-11-17\nAttending Physician: Dr. Mcgee\n\nSUBJECTIVE: Joseph Knight (41 y/o) presents for routine follow-up.\nContact details on file: 392.937.4740x7482, vanessa46@example.net. Insurance Claim: CLAIM-81804602.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic lower back pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-28.",
+    "patient_name": "Joseph Knight",
+    "dob": "1955-02-21",
+    "ssn": "892-49-3946",
+    "mrn": "MRN-183573"
+  },
+  {
+    "id": "NOTE-0019",
+    "text": "PROGRESS NOTE - Webster Memorial Hospital\nPatient Name: Jeremiah Riley\nDOB: 1948-07-09 | Account Number: ACC-4951131\nDate of Service: 2026-01-11\nAttending Physician: Dr. Curry\n\nSUBJECTIVE: Jeremiah Riley (31 y/o) presents for routine follow-up.\nContact details on file: 928.658.8424, linda71@example.org. Insurance Claim: CLAIM-43851498.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic joint stiffness.\nPLAN: Continue current regimen. Return to clinic on 2026-08-22.",
+    "patient_name": "Jeremiah Riley",
+    "dob": "1948-07-09",
+    "ssn": "766-54-2878",
+    "mrn": "MRN-953813"
+  },
+  {
+    "id": "NOTE-0020",
+    "text": "PROGRESS NOTE - Russell Memorial Hospital\nPatient Name: Madison Marshall\nDOB: 1971-10-06 | Account Number: ACC-2345069\nDate of Service: 2025-09-08\nAttending Physician: Dr. Davis\n\nSUBJECTIVE: Madison Marshall (72 y/o) presents for routine follow-up.\nContact details on file: 813-482-6758, fpena@example.net. Insurance Claim: CLAIM-6086345.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic lower back pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-30.",
+    "patient_name": "Madison Marshall",
+    "dob": "1971-10-06",
+    "ssn": "039-39-8072",
+    "mrn": "MRN-122343"
+  },
+  {
+    "id": "NOTE-0021",
+    "text": "PROGRESS NOTE - Reese Memorial Hospital\nPatient Name: Charles Lester\nDOB: 1931-01-08 | Account Number: ACC-2427461\nDate of Service: 2025-12-23\nAttending Physician: Dr. Rodriguez\n\nSUBJECTIVE: Charles Lester (55 y/o) presents for routine follow-up.\nContact details on file: 402-605-3950, martinezrobert@example.org. Insurance Claim: CLAIM-17447248.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic abdominal pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-28.",
+    "patient_name": "Charles Lester",
+    "dob": "1931-01-08",
+    "ssn": "554-33-2859",
+    "mrn": "MRN-900104"
+  },
+  {
+    "id": "NOTE-0022",
+    "text": "PROGRESS NOTE - Cain Memorial Hospital\nPatient Name: Larry Garcia\nDOB: 1946-03-17 | Account Number: ACC-3607488\nDate of Service: 2026-02-23\nAttending Physician: Dr. Edwards\n\nSUBJECTIVE: Larry Garcia (90 y/o) presents for routine follow-up.\nContact details on file: 376-361-5654x52711, vdavis@example.com. Insurance Claim: CLAIM-57723010.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic joint stiffness.\nPLAN: Continue current regimen. Return to clinic on 2026-08-23.",
+    "patient_name": "Larry Garcia",
+    "dob": "1946-03-17",
+    "ssn": "463-30-6780",
+    "mrn": "MRN-755855"
+  },
+  {
+    "id": "NOTE-0023",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Mary Steele (SSN: 360-01-2973)\nDate of Birth: 1934-07-30 | MRN: MRN-286544\nED Visit Date: 2026-05-10\nEmergency Contact: Jeffrey Campbell at (896)812-0183\n\nPatient Mary Steele was evaluated in the ED following an acute episode of lower back pain.\nLab results uploaded to portal: https://www.foster.com/ (IP: 83.74.116.106).\nDischarged in stable condition. Follow up with Dr. Fischer on 2026-08-28.",
+    "patient_name": "Mary Steele",
+    "dob": "1934-07-30",
+    "ssn": "360-01-2973",
+    "mrn": "MRN-286544"
+  },
+  {
+    "id": "NOTE-0024",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Pamela Duran (SSN: 765-56-2879)\nDate of Birth: 1970-01-11 | MRN: MRN-125812\nED Visit Date: 2025-11-14\nEmergency Contact: Seth Reese at (268)838-8516\n\nPatient Pamela Duran was evaluated in the ED following an acute episode of acute migraine.\nLab results uploaded to portal: http://www.schultz.com/ (IP: 41.115.192.16).\nDischarged in stable condition. Follow up with Dr. Morales on 2026-08-25.",
+    "patient_name": "Pamela Duran",
+    "dob": "1970-01-11",
+    "ssn": "765-56-2879",
+    "mrn": "MRN-125812"
+  },
+  {
+    "id": "NOTE-0025",
+    "text": "PATIENT: Charles Gonzalez | DOB: 1951-06-11 | MRN: MRN-185751\nADMISSION DATE: 2025-09-21 | DISCHARGE DATE: 2026-08-27\nPRIMARY CARE PROVIDER: Dr. Hayes\nATTENDING FACILITY: Wood Memorial Hospital, 19986 Carpenter Turnpike Apt. 793, Cassidyhaven, FL 08610\nCONTACT PHONE: 299.755.2717x744 | EMAIL: collinsshannon@example.org | SSN: 773-73-9495\n\nCHIEF COMPLAINT: Patient presented with acute migraine for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Charles Gonzalez, a 29-year-old patient, reported symptoms starting on 2025-04-27.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Lisinopril 500mg daily.\nPLAN: Follow up in 2 weeks at Wood Memorial Hospital or call 299.755.2717x744.",
+    "patient_name": "Charles Gonzalez",
+    "dob": "1951-06-11",
+    "ssn": "773-73-9495",
+    "mrn": "MRN-185751"
+  },
+  {
+    "id": "NOTE-0026",
+    "text": "PROGRESS NOTE - Santiago Memorial Hospital\nPatient Name: Thomas Hughes\nDOB: 1976-09-08 | Account Number: ACC-5614484\nDate of Service: 2025-09-28\nAttending Physician: Dr. Perez\n\nSUBJECTIVE: Thomas Hughes (26 y/o) presents for routine follow-up.\nContact details on file: +1-364-649-2519x25462, vschneider@example.org. Insurance Claim: CLAIM-8846539.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic shortness of breath.\nPLAN: Continue current regimen. Return to clinic on 2026-08-27.",
+    "patient_name": "Thomas Hughes",
+    "dob": "1976-09-08",
+    "ssn": "338-13-9142",
+    "mrn": "MRN-827564"
+  },
+  {
+    "id": "NOTE-0027",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Amanda Diaz (SSN: 240-69-3919)\nDate of Birth: 1962-12-18 | MRN: MRN-640255\nED Visit Date: 2025-09-20\nEmergency Contact: James Hughes at 573-459-7746x8862\n\nPatient Amanda Diaz was evaluated in the ED following an acute episode of shortness of breath.\nLab results uploaded to portal: http://combs.com/ (IP: 162.51.155.161).\nDischarged in stable condition. Follow up with Dr. Perry on 2026-08-25.",
+    "patient_name": "Amanda Diaz",
+    "dob": "1962-12-18",
+    "ssn": "240-69-3919",
+    "mrn": "MRN-640255"
+  },
+  {
+    "id": "NOTE-0028",
+    "text": "PROGRESS NOTE - Brown Memorial Hospital\nPatient Name: Thomas Kennedy\nDOB: 1949-07-11 | Account Number: ACC-88100\nDate of Service: 2026-03-05\nAttending Physician: Dr. Miller\n\nSUBJECTIVE: Thomas Kennedy (80 y/o) presents for routine follow-up.\nContact details on file: (389)286-1434, robertbauer@example.com. Insurance Claim: CLAIM-10633503.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic shortness of breath.\nPLAN: Continue current regimen. Return to clinic on 2026-08-30.",
+    "patient_name": "Thomas Kennedy",
+    "dob": "1949-07-11",
+    "ssn": "020-33-3534",
+    "mrn": "MRN-470392"
+  },
+  {
+    "id": "NOTE-0029",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Austin Allen (SSN: 046-46-8946)\nDate of Birth: 1944-09-29 | MRN: MRN-770899\nED Visit Date: 2026-05-29\nEmergency Contact: Tim Stone PhD at 727-672-2170x43030\n\nPatient Austin Allen was evaluated in the ED following an acute episode of shortness of breath.\nLab results uploaded to portal: https://www.carter.com/ (IP: 59.69.124.91).\nDischarged in stable condition. Follow up with Dr. Crawford on 2026-08-26.",
+    "patient_name": "Austin Allen",
+    "dob": "1944-09-29",
+    "ssn": "046-46-8946",
+    "mrn": "MRN-770899"
+  },
+  {
+    "id": "NOTE-0030",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Jeremy West (SSN: 688-82-6656)\nDate of Birth: 1978-08-14 | MRN: MRN-287892\nED Visit Date: 2026-05-20\nEmergency Contact: Autumn Hampton at (782)802-9702x135\n\nPatient Jeremy West was evaluated in the ED following an acute episode of abdominal pain.\nLab results uploaded to portal: https://martinez.info/ (IP: 111.31.44.232).\nDischarged in stable condition. Follow up with Dr. Holmes on 2026-08-26.",
+    "patient_name": "Jeremy West",
+    "dob": "1978-08-14",
+    "ssn": "688-82-6656",
+    "mrn": "MRN-287892"
+  },
+  {
+    "id": "NOTE-0031",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Rita Ponce DVM (SSN: 308-21-2853)\nDate of Birth: 1977-12-02 | MRN: MRN-576713\nED Visit Date: 2025-09-10\nEmergency Contact: Jessica Bartlett at (783)913-2370x589\n\nPatient Rita Ponce DVM was evaluated in the ED following an acute episode of abdominal pain.\nLab results uploaded to portal: http://martin.com/ (IP: 50.45.216.245).\nDischarged in stable condition. Follow up with Dr. White on 2026-08-22.",
+    "patient_name": "Rita Ponce DVM",
+    "dob": "1977-12-02",
+    "ssn": "308-21-2853",
+    "mrn": "MRN-576713"
+  },
+  {
+    "id": "NOTE-0032",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Danielle Reid (SSN: 547-12-8235)\nDate of Birth: 2005-08-09 | MRN: MRN-131250\nED Visit Date: 2026-01-21\nEmergency Contact: Morgan Valencia at +1-229-692-2995x9001\n\nPatient Danielle Reid was evaluated in the ED following an acute episode of abdominal pain.\nLab results uploaded to portal: https://www.allen-martinez.info/ (IP: 113.140.138.97).\nDischarged in stable condition. Follow up with Dr. Edwards on 2026-08-22.",
+    "patient_name": "Danielle Reid",
+    "dob": "2005-08-09",
+    "ssn": "547-12-8235",
+    "mrn": "MRN-131250"
+  },
+  {
+    "id": "NOTE-0033",
+    "text": "PATIENT: Tony Lin | DOB: 1987-07-18 | MRN: MRN-907340\nADMISSION DATE: 2026-03-22 | DISCHARGE DATE: 2026-08-24\nPRIMARY CARE PROVIDER: Dr. Diaz\nATTENDING FACILITY: Gomez Memorial Hospital, 7974 Melanie Meadows, West Jessica, WV 53356\nCONTACT PHONE: 327.887.7470 | EMAIL: nlevy@example.net | SSN: 592-93-5124\n\nCHIEF COMPLAINT: Patient presented with hypertension for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Tony Lin, a 51-year-old patient, reported symptoms starting on 2024-09-17.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Amoxicillin 500mg daily.\nPLAN: Follow up in 2 weeks at Gomez Memorial Hospital or call 327.887.7470.",
+    "patient_name": "Tony Lin",
+    "dob": "1987-07-18",
+    "ssn": "592-93-5124",
+    "mrn": "MRN-907340"
+  },
+  {
+    "id": "NOTE-0034",
+    "text": "PROGRESS NOTE - Rogers Memorial Hospital\nPatient Name: Robert Morgan\nDOB: 1980-05-24 | Account Number: ACC-8541658\nDate of Service: 2026-04-17\nAttending Physician: Dr. Griffith\n\nSUBJECTIVE: Robert Morgan (38 y/o) presents for routine follow-up.\nContact details on file: 4257787298, francisco94@example.net. Insurance Claim: CLAIM-53873262.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic abdominal pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-30.",
+    "patient_name": "Robert Morgan",
+    "dob": "1980-05-24",
+    "ssn": "513-06-0743",
+    "mrn": "MRN-208727"
+  },
+  {
+    "id": "NOTE-0035",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Jason Harris (SSN: 142-67-3398)\nDate of Birth: 1998-12-07 | MRN: MRN-915215\nED Visit Date: 2026-06-28\nEmergency Contact: Sabrina Blevins at +1-757-786-5278\n\nPatient Jason Harris was evaluated in the ED following an acute episode of acute migraine.\nLab results uploaded to portal: http://miller.info/ (IP: 100.197.104.244).\nDischarged in stable condition. Follow up with Dr. James on 2026-08-22.",
+    "patient_name": "Jason Harris",
+    "dob": "1998-12-07",
+    "ssn": "142-67-3398",
+    "mrn": "MRN-915215"
+  },
+  {
+    "id": "NOTE-0036",
+    "text": "PROGRESS NOTE - Morris Memorial Hospital\nPatient Name: Melissa Taylor\nDOB: 1963-03-15 | Account Number: ACC-8909397\nDate of Service: 2026-03-28\nAttending Physician: Dr. Hayden\n\nSUBJECTIVE: Melissa Taylor (51 y/o) presents for routine follow-up.\nContact details on file: 865-971-2082, wsantos@example.com. Insurance Claim: CLAIM-30289135.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic lower back pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-28.",
+    "patient_name": "Melissa Taylor",
+    "dob": "1963-03-15",
+    "ssn": "654-30-0861",
+    "mrn": "MRN-53231"
+  },
+  {
+    "id": "NOTE-0037",
+    "text": "PATIENT: Julie Lee | DOB: 1945-12-19 | MRN: MRN-170387\nADMISSION DATE: 2026-08-02 | DISCHARGE DATE: 2026-08-29\nPRIMARY CARE PROVIDER: Dr. Wilson\nATTENDING FACILITY: Woods Memorial Hospital, 46374 Turner Stream, West Desireebury, AR 88029\nCONTACT PHONE: 7543932966 | EMAIL: lcaldwell@example.org | SSN: 264-92-3051\n\nCHIEF COMPLAINT: Patient presented with shortness of breath for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Julie Lee, a 62-year-old patient, reported symptoms starting on 2025-06-14.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Amoxicillin 500mg daily.\nPLAN: Follow up in 2 weeks at Woods Memorial Hospital or call 7543932966.",
+    "patient_name": "Julie Lee",
+    "dob": "1945-12-19",
+    "ssn": "264-92-3051",
+    "mrn": "MRN-170387"
+  },
+  {
+    "id": "NOTE-0038",
+    "text": "PROGRESS NOTE - Frazier Memorial Hospital\nPatient Name: Paul Obrien\nDOB: 1987-03-26 | Account Number: ACC-7899184\nDate of Service: 2026-08-17\nAttending Physician: Dr. Williams\n\nSUBJECTIVE: Paul Obrien (90 y/o) presents for routine follow-up.\nContact details on file: 001-539-418-7851x91088, markmeyer@example.org. Insurance Claim: CLAIM-72144402.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic lower back pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-21.",
+    "patient_name": "Paul Obrien",
+    "dob": "1987-03-26",
+    "ssn": "822-86-3579",
+    "mrn": "MRN-957136"
+  },
+  {
+    "id": "NOTE-0039",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Thomas Bennett (SSN: 183-69-6440)\nDate of Birth: 1941-07-23 | MRN: MRN-139449\nED Visit Date: 2025-12-10\nEmergency Contact: Patty Taylor at 723.400.4786x86337\n\nPatient Thomas Bennett was evaluated in the ED following an acute episode of abdominal pain.\nLab results uploaded to portal: https://turner.net/ (IP: 116.206.218.22).\nDischarged in stable condition. Follow up with Dr. Fernandez on 2026-08-23.",
+    "patient_name": "Thomas Bennett",
+    "dob": "1941-07-23",
+    "ssn": "183-69-6440",
+    "mrn": "MRN-139449"
+  },
+  {
+    "id": "NOTE-0040",
+    "text": "PATIENT: Justin Vargas | DOB: 1954-06-21 | MRN: MRN-582851\nADMISSION DATE: 2026-05-28 | DISCHARGE DATE: 2026-08-29\nPRIMARY CARE PROVIDER: Dr. Morrison\nATTENDING FACILITY: Anderson Memorial Hospital, 3517 Davis Stream, North Joseph, TX 79795\nCONTACT PHONE: 956.262.4628x73342 | EMAIL: jfaulkner@example.net | SSN: 353-83-6245\n\nCHIEF COMPLAINT: Patient presented with abdominal pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Justin Vargas, a 74-year-old patient, reported symptoms starting on 2025-03-25.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Amoxicillin 500mg daily.\nPLAN: Follow up in 2 weeks at Anderson Memorial Hospital or call 956.262.4628x73342.",
+    "patient_name": "Justin Vargas",
+    "dob": "1954-06-21",
+    "ssn": "353-83-6245",
+    "mrn": "MRN-582851"
+  },
+  {
+    "id": "NOTE-0041",
+    "text": "PROGRESS NOTE - Figueroa Memorial Hospital\nPatient Name: Colton Figueroa\nDOB: 1995-10-26 | Account Number: ACC-3431161\nDate of Service: 2026-02-25\nAttending Physician: Dr. Pierce\n\nSUBJECTIVE: Colton Figueroa (51 y/o) presents for routine follow-up.\nContact details on file: 001-746-578-5445x87717, lawrence09@example.org. Insurance Claim: CLAIM-53235053.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic abdominal pain.\nPLAN: Continue current regimen. Return to clinic on 2026-08-29.",
+    "patient_name": "Colton Figueroa",
+    "dob": "1995-10-26",
+    "ssn": "246-71-5270",
+    "mrn": "MRN-729417"
+  },
+  {
+    "id": "NOTE-0042",
+    "text": "PATIENT: Steve Mooney | DOB: 1938-08-18 | MRN: MRN-35466\nADMISSION DATE: 2026-03-27 | DISCHARGE DATE: 2026-08-23\nPRIMARY CARE PROVIDER: Dr. Adams\nATTENDING FACILITY: Moreno Memorial Hospital, 408 Drake Fall Apt. 182, East Christine, KS 46958\nCONTACT PHONE: (923)212-0387x50997 | EMAIL: patelrobert@example.org | SSN: 050-98-0105\n\nCHIEF COMPLAINT: Patient presented with shortness of breath for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Steve Mooney, a 87-year-old patient, reported symptoms starting on 2025-05-17.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Metformin 500mg daily.\nPLAN: Follow up in 2 weeks at Moreno Memorial Hospital or call (923)212-0387x50997.",
+    "patient_name": "Steve Mooney",
+    "dob": "1938-08-18",
+    "ssn": "050-98-0105",
+    "mrn": "MRN-35466"
+  },
+  {
+    "id": "NOTE-0043",
+    "text": "PATIENT: John Walsh | DOB: 1953-12-17 | MRN: MRN-524139\nADMISSION DATE: 2026-03-02 | DISCHARGE DATE: 2026-08-30\nPRIMARY CARE PROVIDER: Dr. Campos\nATTENDING FACILITY: Ali Memorial Hospital, 614 Anne Port, Rhodesside, MA 50812\nCONTACT PHONE: 380-633-9740 | EMAIL: whitemelissa@example.org | SSN: 804-43-9271\n\nCHIEF COMPLAINT: Patient presented with abdominal pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: John Walsh, a 30-year-old patient, reported symptoms starting on 2025-01-01.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Gabapentin 500mg daily.\nPLAN: Follow up in 2 weeks at Ali Memorial Hospital or call 380-633-9740.",
+    "patient_name": "John Walsh",
+    "dob": "1953-12-17",
+    "ssn": "804-43-9271",
+    "mrn": "MRN-524139"
+  },
+  {
+    "id": "NOTE-0044",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Erin Walters (SSN: 385-56-3044)\nDate of Birth: 1991-12-15 | MRN: MRN-239220\nED Visit Date: 2025-11-22\nEmergency Contact: Steven Stein at +1-796-719-4311x42626\n\nPatient Erin Walters was evaluated in the ED following an acute episode of shortness of breath.\nLab results uploaded to portal: http://taylor.com/ (IP: 18.6.72.214).\nDischarged in stable condition. Follow up with Dr. Hughes on 2026-08-27.",
+    "patient_name": "Erin Walters",
+    "dob": "1991-12-15",
+    "ssn": "385-56-3044",
+    "mrn": "MRN-239220"
+  },
+  {
+    "id": "NOTE-0045",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Donald Evans (SSN: 641-64-9729)\nDate of Birth: 1941-02-07 | MRN: MRN-263926\nED Visit Date: 2026-06-14\nEmergency Contact: Zachary White at +1-937-712-4065x965\n\nPatient Donald Evans was evaluated in the ED following an acute episode of hypertension.\nLab results uploaded to portal: https://www.salinas-guerra.com/ (IP: 166.139.216.13).\nDischarged in stable condition. Follow up with Dr. Frederick on 2026-08-27.",
+    "patient_name": "Donald Evans",
+    "dob": "1941-02-07",
+    "ssn": "641-64-9729",
+    "mrn": "MRN-263926"
+  },
+  {
+    "id": "NOTE-0046",
+    "text": "PROGRESS NOTE - Byrd Memorial Hospital\nPatient Name: Brenda Turner\nDOB: 1965-01-09 | Account Number: ACC-7098909\nDate of Service: 2026-07-08\nAttending Physician: Dr. Hernandez\n\nSUBJECTIVE: Brenda Turner (39 y/o) presents for routine follow-up.\nContact details on file: 596.788.6805x8911, deborahwilliams@example.net. Insurance Claim: CLAIM-50598851.\nOBJECTIVE: Vitals stable. Physical exam normal.\nASSESSMENT: Management of chronic shortness of breath.\nPLAN: Continue current regimen. Return to clinic on 2026-08-29.",
+    "patient_name": "Brenda Turner",
+    "dob": "1965-01-09",
+    "ssn": "076-58-9797",
+    "mrn": "MRN-749979"
+  },
+  {
+    "id": "NOTE-0047",
+    "text": "PATIENT: Michael Flores | DOB: 1971-07-03 | MRN: MRN-849541\nADMISSION DATE: 2026-01-03 | DISCHARGE DATE: 2026-08-26\nPRIMARY CARE PROVIDER: Dr. Edwards\nATTENDING FACILITY: Cole Memorial Hospital, 0334 Barbara Union Apt. 553, Wilsonfort, NC 84270\nCONTACT PHONE: +1-423-882-8258x67362 | EMAIL: njohnson@example.org | SSN: 870-44-1792\n\nCHIEF COMPLAINT: Patient presented with joint stiffness for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Michael Flores, a 25-year-old patient, reported symptoms starting on 2025-04-16.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Amoxicillin 500mg daily.\nPLAN: Follow up in 2 weeks at Cole Memorial Hospital or call +1-423-882-8258x67362.",
+    "patient_name": "Michael Flores",
+    "dob": "1971-07-03",
+    "ssn": "870-44-1792",
+    "mrn": "MRN-849541"
+  },
+  {
+    "id": "NOTE-0048",
+    "text": "PATIENT: Charles Price | DOB: 1949-05-26 | MRN: MRN-402349\nADMISSION DATE: 2026-03-30 | DISCHARGE DATE: 2026-08-22\nPRIMARY CARE PROVIDER: Dr. Cunningham\nATTENDING FACILITY: Wagner Memorial Hospital, 7677 Christopher Burgs Apt. 404, New Keith, WI 60443\nCONTACT PHONE: 001-728-227-4225x790 | EMAIL: ytaylor@example.net | SSN: 499-82-8805\n\nCHIEF COMPLAINT: Patient presented with lower back pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Charles Price, a 93-year-old patient, reported symptoms starting on 2024-12-02.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Lisinopril 500mg daily.\nPLAN: Follow up in 2 weeks at Wagner Memorial Hospital or call 001-728-227-4225x790.",
+    "patient_name": "Charles Price",
+    "dob": "1949-05-26",
+    "ssn": "499-82-8805",
+    "mrn": "MRN-402349"
+  },
+  {
+    "id": "NOTE-0049",
+    "text": "PATIENT: Gregory Montoya | DOB: 1990-05-24 | MRN: MRN-813308\nADMISSION DATE: 2025-09-18 | DISCHARGE DATE: 2026-08-28\nPRIMARY CARE PROVIDER: Dr. Thomas\nATTENDING FACILITY: Adams Memorial Hospital, 60422 Dustin Islands, Port Megan, MO 64655\nCONTACT PHONE: 001-659-462-9233x095 | EMAIL: tiffany44@example.net | SSN: 831-95-9633\n\nCHIEF COMPLAINT: Patient presented with abdominal pain for 3 weeks.\nHISTORY OF PRESENT ILLNESS: Gregory Montoya, a 35-year-old patient, reported symptoms starting on 2025-06-24.\nPAST MEDICAL HISTORY: None reported.\nMEDICATIONS: Metformin 500mg daily.\nPLAN: Follow up in 2 weeks at Adams Memorial Hospital or call 001-659-462-9233x095.",
+    "patient_name": "Gregory Montoya",
+    "dob": "1990-05-24",
+    "ssn": "831-95-9633",
+    "mrn": "MRN-813308"
+  },
+  {
+    "id": "NOTE-0050",
+    "text": "EMERGENCY DEPARTMENT DISCHARGE SUMMARY\nPatient: Sheila Boone (SSN: 815-69-6517)\nDate of Birth: 1943-04-25 | MRN: MRN-665678\nED Visit Date: 2026-05-18\nEmergency Contact: James Torres at 463.974.5458\n\nPatient Sheila Boone was evaluated in the ED following an acute episode of hypertension.\nLab results uploaded to portal: https://www.davis.org/ (IP: 119.30.254.114).\nDischarged in stable condition. Follow up with Dr. Mckee on 2026-08-30.",
+    "patient_name": "Sheila Boone",
+    "dob": "1943-04-25",
+    "ssn": "815-69-6517",
+    "mrn": "MRN-665678"
+  }
+]

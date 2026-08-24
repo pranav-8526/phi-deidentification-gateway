@@ -1,0 +1,11 @@
+{
+  "model_name": "thomas-sounack/BioClinical-ModernBERT-base",
+  "num_parameters": 149633317,
+  "num_labels": 37,
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "weighted_loss_multiplier": 3.0,
+  "training_dataset": "temlm-foundation/Technetium-I (50k subsample)",
+  "status": "FINE_TUNED_SUCCESS"
+}
