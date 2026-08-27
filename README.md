@@ -33,16 +33,17 @@ phi-deidentification-gateway/
 │   ├── hybrid_analyzer.py # Priority-based ensemble (Regex + Transformer NER)
 │   ├── ner_model.py       # spaCy and BioClinical-ModernBERT entity classifier
 │   ├── pseudonymizer.py   # Core pseudonym masking logic
+│   ├── regex_engine.py    # Deterministic pattern regex matching engine
 │   └── rehydrator.py      # Session encryption & rehydration manager
 ├── tests/
 │   ├── test_extended_cases.py # Edge cases & leakage validation
 │   ├── test_gateway.py        # Gateway core component tests
 │   └── test_hybrid.py         # Ensemble and eponym verification
 ├── scripts/
-│   ├── baseline_presidio.py   # MS Presidio baseline benchmark script
+│   ├── baseline_spacy.py      # Stock spaCy (en_core_web_sm) baseline benchmark
+│   ├── baseline_presidio.py   # Transformer NER baseline benchmark script
 │   ├── baseline_regex.py      # Regex-only baseline benchmark script
 │   ├── demo_roundtrip.py      # End-to-end roundtrip demonstration script
-│   ├── generate_synthetic_notes.py # Synthetic medical record notes generator
 │   └── train_bio_clinical_ner.py # ModernBERT fine-tuning pipeline script
 └── data/
     ├── samples/           # Sample clinical texts for local testing

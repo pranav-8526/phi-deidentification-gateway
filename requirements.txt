@@ -7,3 +7,6 @@ cryptography>=42.0.0
 numpy>=1.26.0
 pytest>=8.0.0
 faker>=24.0.0
+torch>=2.0.0
+transformers>=4.38.0
+huggingface_hub>=0.20.0

@@ -77,6 +77,7 @@ class TransformerPHIAnalyzer:
                 device=device,
                 ignore_labels=[],
             )
+            logger.info(f"[NER Pipeline] Loaded BioClinical-ModernBERT model from '{self.model_name}' (149M params)")
         except Exception as e:
             logger.warning(f"Transformer model unavailable ({e}). Falling back to spaCy.")
             self.pipeline = None

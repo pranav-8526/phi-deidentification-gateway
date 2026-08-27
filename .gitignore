@@ -29,5 +29,6 @@ htmlcov/
 *.png
 *.txt
 !requirements.txt
+data/key.bin
 models/adapter/checkpoint-*/
 train.log

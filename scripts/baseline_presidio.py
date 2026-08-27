@@ -1,4 +1,4 @@
-"""Presidio baseline — measures leak rate using transformer/spaCy analyzer alone."""
+"""Transformer NER baseline — measures leak rate using TransformerPHIAnalyzer alone (no regex)."""
 import json
 import sys
 from pathlib import Path
