@@ -1,6 +1,8 @@
 import json
 import pytest
+from datetime import datetime
 from pathlib import Path
+
 from src.gateway import DeIDGateway
 from src.regex_engine import RegexPHIAnalyzer
 from src.date_shifter import DateShifter, AgeCapper
@@ -117,3 +119,96 @@ def test_no_leak_to_llm(gateway):
     masked, mapping = gateway.deidentify(text)
     assert "Allison Hill" not in masked
     assert "2024-03-15" not in masked
+
+
+def test_date_shifting_intervals_and_ordering(gateway):
+    text = "Milestones: 2025-01-01 (admission), 2025-01-05 (procedure), 2025-02-01 (discharge)."
+    masked, mapping = gateway.deidentify(text, patient_seed=42, use_shifted_dates=True)
+    
+    assert "2025-01-01" not in masked
+    assert "2025-01-05" not in masked
+    assert "2025-02-01" not in masked
+    
+    shifter = DateShifter(seed=42)
+    s1 = shifter.shift_date_str("2025-01-01")
+    s2 = shifter.shift_date_str("2025-01-05")
+    s3 = shifter.shift_date_str("2025-02-01")
+    
+    assert s1 in masked
+    assert s2 in masked
+    assert s3 in masked
+    
+    dt1 = datetime.strptime(s1, "%Y-%m-%d")
+    dt2 = datetime.strptime(s2, "%Y-%m-%d")
+    dt3 = datetime.strptime(s3, "%Y-%m-%d")
+    
+    assert dt1 < dt2 < dt3
+    assert (dt2 - dt1).days == 4
+    assert (dt3 - dt1).days == 31
+    
+    rehydrated = gateway.rehydrate(masked, mapping)
+    assert "2025-01-01" in rehydrated
+    assert "2025-01-05" in rehydrated
+    assert "2025-02-01" in rehydrated
+
+
+def test_textual_and_ambiguous_date_formats(gateway):
+    formats_text = (
+        "Dates: January 15, 2025 | March 10, 1980 | 02/11/2024 | 17/02/2024"
+    )
+    masked, mapping = gateway.deidentify(formats_text, patient_seed=77)
+    
+    assert "January 15, 2025" not in masked
+    assert "March 10, 1980" not in masked
+    assert "02/11/2024" not in masked
+    assert "17/02/2024" not in masked
+    
+    rehydrated = gateway.rehydrate(masked, mapping)
+    assert "January 15, 2025" in rehydrated
+    assert "March 10, 1980" in rehydrated
+    assert "02/11/2024" in rehydrated
+    assert "17/02/2024" in rehydrated
+
+
+def test_age_capping_non_age_context_preservation(gateway):
+    text = (
+        "Patient aged 92 presented with BP 92, weight 92 kg, Room 92, Page 92 of report, "
+        "and MRN 929812. Also, patient was 97 years old."
+    )
+    masked, _ = gateway.deidentify(text)
+    
+    assert "90+" in masked
+    assert "97" not in masked
+    assert "BP 92" in masked or "bp 92" in masked.lower()
+    assert "Room 92" in masked or "room 92" in masked.lower()
+    assert "Page 92" in masked or "page 92" in masked.lower()
+
+
+def test_adversarial_name_eponym_hospital_cases(gateway):
+    text = (
+        "Dr. Parkinson evaluated Mr. Wood at Wood Memorial Hospital for Parkinson's disease. "
+        "Patient O'Brien-Nakamura presented with Foley catheter and Babinski reflex. "
+        "Also noted: JACKSON, May, and Winter."
+    )
+    masked, mapping = gateway.deidentify(text)
+    
+    assert "Parkinson's disease" in masked or "Parkinson's" in masked
+    assert "Foley catheter" in masked or "Foley" in masked
+    assert "Babinski reflex" in masked or "Babinski" in masked
+    assert "Dr. Parkinson" not in masked
+    assert "Mr. Wood" not in masked
+    assert "O'Brien-Nakamura" not in masked
+
+
+def test_rehydration_tampered_and_unknown_tokens(gateway):
+    raw = "Patient test note with token [UNKNOWN_999]."
+    masked, mapping = gateway.deidentify(raw)
+    
+    with pytest.raises(Exception):
+        gateway.rehydrate(masked, "INVALID_BASE64_TOKEN_XXXXX")
+    
+    rehydrated, report = gateway.rehydrator.rehydrate(f"{masked} [UNKNOWN_999]", mapping)
+    assert "unmatched_tokens" in report
+    assert "[UNKNOWN_999]" in report["unmatched_tokens"]
+
+

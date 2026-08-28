@@ -13,8 +13,9 @@ _COMMON_WORDS = {"date", "name", "male", "female", "patient", "doctor"}
 
 
 class Pseudonymizer:
-    def __init__(self, date_shifter: DateShifter):
+    def __init__(self, date_shifter: DateShifter, use_shifted_dates: bool = True):
         self.date_shifter = date_shifter
+        self.use_shifted_dates = use_shifted_dates
         self.entity_counts: Dict[str, int] = {}
         self.value_to_pseudonym: Dict[str, str] = {}
         self.mapping: Dict[str, str] = {}
@@ -48,10 +49,17 @@ class Pseudonymizer:
                 pseudonym = self.get_pseudonym(raw_val, span.category)
                 self.mapping[pseudonym] = raw_val
                 self.mapping[f"{pseudonym}_SHIFTED"] = shifted
+                if self.use_shifted_dates:
+                    replacement = shifted
+                    self.mapping[shifted] = raw_val
+                else:
+                    replacement = pseudonym
             else:
                 pseudonym = self.get_pseudonym(raw_val, span.category)
-            masked_text = masked_text[:span.start] + pseudonym + masked_text[span.end:]
-            masked_raw_values.append((raw_val, pseudonym, span.category))
+                replacement = pseudonym
+            masked_text = masked_text[:span.start] + replacement + masked_text[span.end:]
+            masked_raw_values.append((raw_val, replacement, span.category))
+
 
         for raw_val, pseudonym, category in masked_raw_values:
             if len(raw_val) < 3 or raw_val.lower() in _COMMON_WORDS:
