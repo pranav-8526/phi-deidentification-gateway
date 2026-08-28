@@ -43,7 +43,14 @@ class Pseudonymizer:
         masked_raw_values: List[Tuple[str, str, HIPAACategory]] = []
 
         for span in non_overlapping:
-            raw_val = text[span.start:span.end]
+            start, end = span.start, span.end
+            while start < end and text[start].isspace():
+                start += 1
+            while end > start and text[end - 1].isspace():
+                end -= 1
+            if start >= end:
+                continue
+            raw_val = text[start:end]
             if span.category == HIPAACategory.DATES_AGES and span.label == "DATE":
                 shifted = self.date_shifter.shift_date_str(raw_val)
                 pseudonym = self.get_pseudonym(raw_val, span.category)
@@ -57,8 +64,9 @@ class Pseudonymizer:
             else:
                 pseudonym = self.get_pseudonym(raw_val, span.category)
                 replacement = pseudonym
-            masked_text = masked_text[:span.start] + replacement + masked_text[span.end:]
+            masked_text = masked_text[:start] + replacement + masked_text[end:]
             masked_raw_values.append((raw_val, replacement, span.category))
+
 
 
         for raw_val, pseudonym, category in masked_raw_values:

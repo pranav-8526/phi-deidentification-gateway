@@ -28,4 +28,34 @@ class HybridPHIAnalyzer:
             if not any(not (candidate.end <= k.start or candidate.start >= k.end) for k in resolved):
                 resolved.append(candidate)
 
-        return sorted(resolved, key=lambda s: s.start)
+        spans_by_start = sorted(resolved, key=lambda s: s.start)
+        return self._merge_adjacent_spans(spans_by_start, text)
+
+    def _merge_adjacent_spans(self, spans: List[PHISpan], text: str) -> List[PHISpan]:
+        if not spans:
+            return []
+        merged: List[PHISpan] = []
+        current = spans[0]
+
+        for nxt in spans[1:]:
+            if nxt.category == current.category and nxt.start <= current.end:
+                new_start = current.start
+                new_end = max(current.end, nxt.end)
+                merged_text = text[new_start:new_end]
+                new_score = max(current.score, nxt.score)
+                new_label = current.label if current.score >= nxt.score else nxt.label
+                current = PHISpan(
+                    start=new_start,
+                    end=new_end,
+                    label=new_label,
+                    text=merged_text,
+                    category=current.category,
+                    score=new_score
+                )
+            else:
+                merged.append(current)
+                current = nxt
+
+        merged.append(current)
+        return merged
+

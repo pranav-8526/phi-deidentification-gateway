@@ -212,3 +212,16 @@ def test_rehydration_tampered_and_unknown_tokens(gateway):
     assert "[UNKNOWN_999]" in report["unmatched_tokens"]
 
 
+def test_adjacent_span_merging_exact_roundtrip(gateway):
+    sample_text = "Patient John Smith was admitted to City Hospital on January 15, 2025."
+    masked, enc_mapping = gateway.deidentify(sample_text)
+    
+    assert "John Smith" not in masked
+    assert "City" not in masked
+    assert "January 15, 2025" not in masked
+    
+    rehydrated = gateway.rehydrate(masked, enc_mapping)
+    assert rehydrated == sample_text
+
+
+
