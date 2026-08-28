@@ -1,8 +1,12 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import re
 import logging
-from pathlib import Path
 from typing import List
 from src.config import HIPAACategory
+
 from src.regex_engine import PHISpan
 from src.eponym_whitelist import EponymDisambiguator
 
@@ -250,3 +254,64 @@ class TransformerPHIAnalyzer:
                 ))
 
         return spans
+
+    def get_model_diagnostics(self) -> dict:
+        import torch
+        adapter_dir = Path("models/adapter")
+        has_local_weights = (
+            adapter_dir.exists() and 
+            (adapter_dir / "config.json").exists() and
+            ((adapter_dir / "model.safetensors").exists() or (adapter_dir / "pytorch_model.bin").exists())
+        )
+        cuda_avail = torch.cuda.is_available()
+        gpu_name = torch.cuda.get_device_name(0) if cuda_avail else "N/A"
+        
+        num_labels = 0
+        id2label = {}
+        param_count = 0
+        architecture = "Unknown"
+        
+        if self.pipeline and hasattr(self.pipeline, "model"):
+            m = self.pipeline.model
+            param_count = sum(p.numel() for p in m.parameters())
+            architecture = m.__class__.__name__
+            if hasattr(m.config, "id2label"):
+                id2label = m.config.id2label
+                num_labels = len(id2label)
+        
+        return {
+            "model_path": self.model_name,
+            "fine_tuned_weights_exist": has_local_weights,
+            "FINE_TUNED_MODEL_AVAILABLE": has_local_weights,
+            "architecture": architecture,
+            "parameter_count": param_count,
+            "number_of_labels": num_labels,
+            "id2label": id2label,
+            "device": "cuda:0" if cuda_avail else "cpu",
+            "cuda_available": cuda_avail,
+            "gpu_name": gpu_name,
+            "is_fine_tuned": has_local_weights,
+            "is_fallback": not has_local_weights,
+        }
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    analyzer = TransformerPHIAnalyzer()
+    diag = analyzer.get_model_diagnostics()
+    print("\n" + "=" * 60)
+    print("         NER MODEL DIAGNOSTIC AUDIT REPORT")
+    print("=" * 60)
+    print(f"Model Path                   : {diag['model_path']}")
+    print(f"FINE_TUNED_MODEL_AVAILABLE   : {diag['FINE_TUNED_MODEL_AVAILABLE']}")
+    print(f"Fine-Tuned Weights Exist     : {diag['fine_tuned_weights_exist']}")
+    print(f"Architecture                 : {diag['architecture']}")
+    print(f"Parameter Count              : {diag['parameter_count']:,}")
+    print(f"Number of Labels             : {diag['number_of_labels']}")
+    print(f"Device                       : {diag['device']}")
+    print(f"CUDA Available               : {diag['cuda_available']}")
+    print(f"GPU Name                     : {diag['gpu_name']}")
+    print(f"Is Fine-Tuned                : {diag['is_fine_tuned']}")
+    print(f"Is Fallback                  : {diag['is_fallback']}")
+    print("=" * 60 + "\n")
+
