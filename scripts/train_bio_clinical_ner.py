@@ -131,8 +131,28 @@ def compute_metrics(p):
     }
 
 
-def prepare_training_pipeline(num_samples: int = 50000):
-    print(f"Loading {num_samples} Technetium-I notes...")
+def check_gpu_environment(model):
+    print("=" * 60)
+    print("           GPU ENVIRONMENT & HARDWARE AUDIT")
+    print("=" * 60)
+    cuda_available = torch.cuda.is_available()
+    print(f"CUDA Available: {cuda_available}")
+    if cuda_available:
+        gpu_name = torch.cuda.get_device_name(0)
+        gpu_mem = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+        print(f"GPU Model:      {gpu_name}")
+        print(f"VRAM Available: {gpu_mem:.2f} GB")
+    else:
+        print("GPU Model:      None (Running on CPU - GPU recommended for fast training)")
+    
+    device = next(model.parameters()).device
+    print(f"Model Device:   {device}")
+    print("=" * 60 + "\n")
+    return cuda_available
+
+
+def prepare_training_pipeline(num_samples: int = 50000, is_sanity_check: bool = False):
+    print(f"Loading {num_samples} Technetium-I notes for {'SANITY CHECK' if is_sanity_check else 'FULL TRAINING'}...")
     raw = load_dataset("json", data_files=hf_hub_download("temlm-foundation/Technetium-I", "train.jsonl", repo_type="dataset"), split=f"train[:{num_samples}]")
 
     ds = Dataset.from_dict({
@@ -142,29 +162,32 @@ def prepare_training_pipeline(num_samples: int = 50000):
 
     tok_ds = ds.map(tokenize_with_labels, batched=True, remove_columns=["text", "phi_annotations"])
 
-    # 90% train, 10% validation split
     split_ds = tok_ds.train_test_split(test_size=0.1, seed=42)
     train_ds = split_ds["train"]
     eval_ds = split_ds["test"]
 
+    output_dir = "models/adapter_sanity" if is_sanity_check else "models/adapter"
+
     args = TrainingArguments(
-        output_dir="models/adapter",
+        output_dir=output_dir,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
         learning_rate=2e-5,
-        num_train_epochs=3,
+        num_train_epochs=1 if is_sanity_check else 3,
+        max_steps=10 if is_sanity_check else -1,
         save_total_limit=2,
-        logging_steps=50,
+        logging_steps=2 if is_sanity_check else 50,
         eval_strategy="steps",
-        eval_steps=500,
+        eval_steps=5 if is_sanity_check else 500,
         save_strategy="steps",
-        save_steps=500,
+        save_steps=5 if is_sanity_check else 500,
         load_best_model_at_end=True,
         metric_for_best_model="loss",
         greater_is_better=False,
         report_to="none",
         fp16=torch.cuda.is_available(),
         seed=42,
+        disable_tqdm=False,
     )
 
     trainer = WeightedTrainer(
@@ -178,10 +201,37 @@ def prepare_training_pipeline(num_samples: int = 50000):
     return trainer
 
 
+def run_full_training(num_samples: int = 50000, run_sanity_first: bool = True):
+    cuda_active = check_gpu_environment(model)
+    
+    if run_sanity_first:
+        print("Step 1/2: Running 100-sample GPU/Model Sanity Check...")
+        sanity_trainer = prepare_training_pipeline(num_samples=100, is_sanity_check=True)
+        sanity_trainer.train()
+        print("✅ Sanity check passed! CUDA, model forward/backward pass, and loss computation verified.\n")
+    
+    print(f"Step 2/2: Starting Full 3-Epoch Training on {num_samples} records...")
+    trainer = prepare_training_pipeline(num_samples=num_samples, is_sanity_check=False)
+    
+    train_result = trainer.train()
+    
+    save_path = Path("models/adapter").resolve()
+    trainer.save_model(str(save_path))
+    tok.save_pretrained(str(save_path))
+    
+    print("\n" + "=" * 60)
+    print("           TRAINING FINISHED SUCCESSFULLY")
+    print("=" * 60)
+    print(f"Global Steps:     {train_result.global_step}")
+    print(f"Training Loss:    {train_result.training_loss:.4f}")
+    print(f"Saved Directory:  {save_path}")
+    print("Saved Files:")
+    for f in save_path.iterdir():
+        print(f"  - {f.name} ({f.stat().st_size / (1024*1024):.2f} MB)")
+    print("=" * 60 + "\n")
+    return trainer
+
+
 if __name__ == "__main__":
-    trainer = prepare_training_pipeline()
-    print("Training script ready. Call trainer.train() when ready to train.")
-    # trainer.train()
-    # trainer.save_model("models/adapter")
-    # tok.save_pretrained("models/adapter")
+    run_full_training()
 
