@@ -57,9 +57,21 @@ def _overlaps(start: int, end: int, spans: List[PHISpan]) -> bool:
 
 class TransformerPHIAnalyzer:
     def __init__(self, model_name: str = None):
-        adapter = Path("models/adapter/pytorch_model.bin")
-        default = "models/adapter" if adapter.exists() else "thomas-sounack/BioClinical-ModernBERT-base"
-        self.model_name = model_name or default
+        adapter_dir = Path("models/adapter")
+        has_local_weights = (
+            adapter_dir.exists() and 
+            (adapter_dir / "config.json").exists() and
+            ((adapter_dir / "model.safetensors").exists() or (adapter_dir / "pytorch_model.bin").exists())
+        )
+        if model_name:
+            self.model_name = model_name
+        elif has_local_weights:
+            self.model_name = "models/adapter"
+            logger.info("[NER] Loading fine-tuned local model: models/adapter")
+        else:
+            self.model_name = "thomas-sounack/BioClinical-ModernBERT-base"
+            logger.info(f"[NER] Loading base model fallback: {self.model_name}")
+
         self.pipeline = None
         self._init_model()
 
@@ -77,7 +89,7 @@ class TransformerPHIAnalyzer:
                 device=device,
                 ignore_labels=[],
             )
-            logger.info(f"[NER Pipeline] Loaded BioClinical-ModernBERT model from '{self.model_name}' (149M params)")
+            logger.info(f"[NER Pipeline] Loaded BioClinical-ModernBERT model from '{self.model_name}'")
         except Exception as e:
             logger.warning(f"Transformer model unavailable ({e}). Falling back to spaCy.")
             self.pipeline = None
@@ -102,16 +114,79 @@ class TransformerPHIAnalyzer:
         return chunks
 
     def _map_entity(self, entity_group: str):
-        group = entity_group.upper()
-        name_tags = ("PER", "PERSON", "NAME", "PATIENT", "DOCTOR")
-        loc_tags = ("LOC", "LOCATION", "GEO", "CITY", "STATE", "ADDRESS")
-        org_tags = ("ORG", "HOSPITAL", "FACILITY", "CLINIC")
-        if any(t in group for t in name_tags):
+        if not entity_group:
+            return None, ""
+        group = entity_group.upper().strip()
+        if group.startswith("B-") or group.startswith("I-"):
+            group = group[2:]
+
+        mapping = {
+            # NAMES
+            "NAME": (HIPAACategory.NAMES, "NAME"),
+            "PERSON": (HIPAACategory.NAMES, "NAME"),
+            "PATIENT": (HIPAACategory.NAMES, "NAME"),
+            "DOCTOR": (HIPAACategory.NAMES, "NAME"),
+            "PER": (HIPAACategory.NAMES, "NAME"),
+
+            # GEOGRAPHY
+            "LOCATION": (HIPAACategory.GEOGRAPHY, "LOCATION"),
+            "LOC": (HIPAACategory.GEOGRAPHY, "LOCATION"),
+            "GEO": (HIPAACategory.GEOGRAPHY, "LOCATION"),
+            "ADDRESS": (HIPAACategory.GEOGRAPHY, "LOCATION"),
+            "HOSPITAL": (HIPAACategory.GEOGRAPHY, "FACILITY"),
+            "FACILITY": (HIPAACategory.GEOGRAPHY, "FACILITY"),
+            "CLINIC": (HIPAACategory.GEOGRAPHY, "FACILITY"),
+            "ORG": (HIPAACategory.GEOGRAPHY, "FACILITY"),
+
+            # DATES & AGES
+            "DATE": (HIPAACategory.DATES_AGES, "DATE"),
+            "AGE": (HIPAACategory.DATES_AGES, "AGE"),
+
+            # CONTACT / PHONE / EMAIL / FAX
+            "PHONE": (HIPAACategory.PHONE, "PHONE"),
+            "FAX": (HIPAACategory.FAX, "FAX"),
+            "EMAIL": (HIPAACategory.EMAIL, "EMAIL"),
+            "CONTACT": (HIPAACategory.PHONE, "CONTACT"),
+
+            # IDENTIFIERS
+            "SSN": (HIPAACategory.SSN, "SSN"),
+            "MRN": (HIPAACategory.MRN, "MRN"),
+            "HEALTH_PLAN": (HIPAACategory.HEALTH_PLAN, "HEALTH_PLAN"),
+            "ACCOUNT": (HIPAACategory.ACCOUNT, "ACCOUNT"),
+            "CERTIFICATE": (HIPAACategory.CERTIFICATE, "CERTIFICATE"),
+            "VEHICLE": (HIPAACategory.VEHICLE, "VEHICLE"),
+            "DEVICE": (HIPAACategory.DEVICE, "DEVICE"),
+            "URL": (HIPAACategory.URL, "URL"),
+            "IP": (HIPAACategory.IP, "IP"),
+            "ID": (HIPAACategory.OTHER_ID, "ID"),
+            "OTHER_ID": (HIPAACategory.OTHER_ID, "ID"),
+            "PROFESSION": (HIPAACategory.OTHER_ID, "PROFESSION"),
+        }
+
+        if group in mapping:
+            return mapping[group]
+
+        if "NAME" in group or "PER" in group:
             return HIPAACategory.NAMES, "NAME"
-        if any(t in group for t in loc_tags):
+        if "LOC" in group or "GEO" in group or "ADDRESS" in group:
             return HIPAACategory.GEOGRAPHY, "LOCATION"
-        if any(t in group for t in org_tags):
+        if "HOSP" in group or "FACIL" in group or "CLINIC" in group:
             return HIPAACategory.GEOGRAPHY, "FACILITY"
+        if "DATE" in group:
+            return HIPAACategory.DATES_AGES, "DATE"
+        if "AGE" in group:
+            return HIPAACategory.DATES_AGES, "AGE"
+        if "PHONE" in group or "TEL" in group:
+            return HIPAACategory.PHONE, "PHONE"
+        if "EMAIL" in group:
+            return HIPAACategory.EMAIL, "EMAIL"
+        if "SSN" in group:
+            return HIPAACategory.SSN, "SSN"
+        if "MRN" in group:
+            return HIPAACategory.MRN, "MRN"
+        if "ID" in group:
+            return HIPAACategory.OTHER_ID, "ID"
+
         return None, group
 
     def analyze(self, text: str) -> List[PHISpan]:
